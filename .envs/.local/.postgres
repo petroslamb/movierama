@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=movierama
+POSTGRES_USER=iFCrstsnAWbTFoLfYujiJkiroSkmFPdS
+POSTGRES_PASSWORD=OXnapJTwhiVLb6oXq1xlnjDN3UoFiR8nLxtjrxpJ89OdHwz5gkjw8AoKJ0lEL3iT
