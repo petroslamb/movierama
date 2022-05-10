@@ -7,6 +7,10 @@ A movie voting app
 
 License: MIT
 
+[Visit MovieRama](https://peaceful-spire-34905.herokuapp.com/)
+
+[Read the docs](https://movierama.readthedocs.io/)
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).

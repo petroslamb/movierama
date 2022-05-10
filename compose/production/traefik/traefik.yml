@@ -28,7 +28,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`petrorama.com`) || Host(`www.petrorama.com`)"
+      rule: "Host(`https://peaceful-spire-34905.herokuapp.com/`) || Host(`www.petrorama.com`)"
       entryPoints:
         - web-secure
       middlewares:
