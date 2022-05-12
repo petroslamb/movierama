@@ -1,19 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h4><a href="{% url 'movies:user_movie_list' %}">User Movies</a></h4>
 
-<ul>
-    {% for user, movies in object_list.items %}
-        <li>{{ user.username }}
-            <ul>
-                {% for movie in movies %}
-                <li>{{ movie.title }}  (likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }})</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+{% for user, movies in object_list.items %}
+<div>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{ user.id }}" role="button" aria-expanded="false" aria-controls="collapseExample{{ user.id }}">
+        {{ user.username }}
+    </a>
+  <div class="collapse" id="collapseExample{{ user.id }}">
+    <div class="card card-body">
+        {% for movie in movies %}
+        <ul>
+            <li>{{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}]
+            <a href="{% url 'movies:movie_vote' movie.id %}">vote</a>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
 
 {% endblock %}
