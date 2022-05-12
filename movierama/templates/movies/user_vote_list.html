@@ -15,12 +15,23 @@
     </h2>
     <div id="flush-collapse{{ user.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ user.id }}" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
-        {% for movie in movies %}
+
+        <b>Liked</b>
+        {% for movie in movies.liked %}
         <ul>
-            <li> {{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] added on {{ movie.pub_date }} <b>- {{movie.user_vote}}</b>
+            <li> {{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] added on {{ movie.pub_date }} <b>- like</b>
             </li>
         </ul>
         {% endfor %}
+
+        <b>Disliked</b>
+        {% for movie in movies.disliked %}
+        <ul>
+            <li> {{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] added on {{ movie.pub_date }} <b>- dislike</b>
+            </li>
+        </ul>
+        {% endfor %}
+
       </div>
     </div>
   </div>

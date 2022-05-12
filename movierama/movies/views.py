@@ -104,12 +104,9 @@ def user_vote_list(request, template_name="movies/user_vote_list.html"):
     users = User.objects.all()
 
     for user in users:
-        movies = Movie.votes.all(user.id)
-        for movie in movies:
-            movie.user_vote = (
-                "like" if movie.votes.exists(user.id, action=UP) else "dislike"
-            )
-        user_movies.update({user: movies})
+        movies_liked = Movie.votes.all(user.id, action=UP)
+        movies_disliked = Movie.votes.all(user.id, action=DOWN)
+        user_movies.update({user: {"liked": movies_liked, "disliked": movies_disliked}})
 
     data = {}
     data["object_list"] = user_movies

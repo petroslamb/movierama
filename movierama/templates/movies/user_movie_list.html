@@ -17,7 +17,7 @@
       <div class="accordion-body">
         {% for movie in movies %}
         <ul>
-            <li><b>{{ movie.title }}</b> [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] on {{ movie.pub_date }}
+            <li><b>{{ movie.title }}</b> [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] submitted on {{ movie.pub_date }}
             </li>
         </ul>
         {% endfor %}
