@@ -3,10 +3,11 @@
 {% block content %}
 
 <h4><a href="{% url 'movies:my_movie_list' %}">My Movies</a></h4>
+<p>The movies you have submitted. Click on the links to edit or delete one of them.</p>
 
 <ul>
     {% for movie in object_list %}
-    <li>{{ movie.title }}  ({{ movie.description }})
+    <li><b>{{ movie.title }}</b>  ({{ movie.description }}) [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] by {{ movie.user.username }} on {{ movie.pub_date }}
     <a href="{% url 'movies:movie_edit' movie.id %}">edit</a>
     <a href="{% url 'movies:movie_delete' movie.id %}">delete</a>
     </li>

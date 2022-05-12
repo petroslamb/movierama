@@ -2,26 +2,29 @@
 
 {% block content %}
 <h4><a href="{% url 'movies:user_movie_list' %}">User Movies</a></h4>
+<p>List of Movies submitted by each User. Click on a username to expand the list of user movies.</p>
 
-{% for user, movies in object_list.items %}
-<div>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{ user.id }}" role="button" aria-expanded="false" aria-controls="collapseExample{{ user.id }}">
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  {% for user, movies in object_list.items %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-heading{{ user.id }}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ user.id }}" aria-expanded="false" aria-controls="flush-collapse{{ user.id }}">
         {{ user.username }}
-    </a>
-  <div class="collapse" id="collapseExample{{ user.id }}">
-    <div class="card card-body">
+      </button>
+    </h2>
+    <div id="flush-collapse{{ user.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ user.id }}" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
         {% for movie in movies %}
         <ul>
-            <li>{{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}]
-            <a href="{% url 'movies:movie_vote' movie.id %}">vote</a>
+            <li><b>{{ movie.title }}</b> [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] on {{ movie.pub_date }}
             </li>
         </ul>
         {% endfor %}
+      </div>
     </div>
   </div>
+  {% endfor %}
 </div>
-{% endfor %}
-
-
 
 {% endblock %}

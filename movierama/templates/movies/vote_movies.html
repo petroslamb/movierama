@@ -3,14 +3,14 @@
 {% block content %}
 
 <h4><a href="{% url 'movies:vote_movies' %}">Vote Movies</a></h4>
+<p>Like, hate or remove your vote on a Movie. You are not allowed to vote your own movies and are only allowed one vote per movie.</p>
 
 <ul>
     {% for movie in object_list %}
-    <li>{{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}]
+    <li><b>{{ movie.title }}</b> [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] by {{ movie.user.username }} on {{ movie.pub_date }}
     <a href="{% url 'movies:movie_vote' movie.id %}">vote</a>
     </li>
     {% endfor %}
 </ul>
 
-<p>You are not allowed to vote your own movies.</p>
 {% endblock %}
