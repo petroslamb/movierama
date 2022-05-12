@@ -71,11 +71,14 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "django_tables2",
+    "vote",
 ]
 
 LOCAL_APPS = [
     "movierama.users",
     # Your stuff: custom apps go here
+    "movierama.movies",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -272,3 +275,4 @@ SOCIALACCOUNT_FORMS = {"signup": "movierama.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+DJANGO_TABLES2_TEMPLATE = "django_tables2/semantic.html"

@@ -52,7 +52,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'movies:movie_list' %}">Movies</a>
+              </li>
               {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'movies:user_movie_list' %}">User Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'movies:vote_movies' %}">Vote Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'movies:my_movie_list' %}">My Movies</a>
+              </li>
+                <li class="nav-item">
+                  {# URL provided by movies/urls.py #}
+                  <a class="nav-link" href="{% url 'movies:movie_new' %}">{% translate "Add Movie" %}</a>
+                </li>
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
                   <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4><a href="{% url 'movies:user_movie_list' %}">User Movies</a></h4>
+
+<ul>
+    {% for user, movies in object_list.items %}
+        <li>{{ user.username }}
+            <ul>
+                {% for movie in movies %}
+                <li>{{ movie.title }}  (likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }})</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

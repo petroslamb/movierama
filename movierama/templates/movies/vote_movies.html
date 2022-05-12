@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4><a href="{% url 'movies:vote_movies' %}">Vote Movies</a></h4>
+
+<ul>
+    {% for movie in object_list %}
+    <li>{{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}]
+    <a href="{% url 'movies:movie_vote' movie.id %}">vote</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

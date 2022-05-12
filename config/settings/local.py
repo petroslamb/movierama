@@ -62,3 +62,5 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+if not env("USE_DOCKER") == "yes":
+    ACCOUNT_EMAIL_VERIFICATION = "none"

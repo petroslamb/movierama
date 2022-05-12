@@ -16,6 +16,7 @@ urlpatterns = [
     path("users/", include("movierama.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("movies/", include("movierama.movies.urls", namespace="movies")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

@@ -1,1 +1,10 @@
 {% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<p>A Movie Voting application</p>
+
+<img src="{% static 'images/kill_bill.jpeg' %}" alt="My image"/>
+
+{% endblock content %}
