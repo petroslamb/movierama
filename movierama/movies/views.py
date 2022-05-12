@@ -52,6 +52,7 @@ def movie_vote(request, pk, template_name="movies/movie_vote_form.html"):
     return render(request, template_name, {"form": form})
 
 
+@login_required
 def movie_list(request, template_name="movies/movie_list.html"):
     movies = Movie.objects.all()
     data = {}
