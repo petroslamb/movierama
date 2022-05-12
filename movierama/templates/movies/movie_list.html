@@ -4,6 +4,6 @@
 
 {% block content %}
 <h4><a href="{% url 'movies:movie_list' %}">Movies Table</a></h4>
-<p>Movies table, all movies submitted by all Users. Displays number of "likes", "hates" and a total score.</p>
+<p>All movies submitted by all Users. Displays number of "likes", "hates" and a total score.</p>
 {% render_table object_list %}
 {% endblock %}

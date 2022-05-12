@@ -63,6 +63,14 @@ def movie_list(request, template_name="movies/movie_list.html"):
 @login_required
 def vote_movies(request, template_name="movies/vote_movies.html"):
     movies = Movie.objects.exclude(user=request.user).all()
+    for movie in movies:
+        my_vote = "have not voted"
+        if movie.votes.exists(request.user.id):
+            my_vote = "liked"
+        elif movie.votes.exists(request.user.id, action=DOWN):
+            my_vote = "disliked"
+        movie.my_vote = my_vote
+
     data = {}
     data["object_list"] = movies
     return render(request, template_name, data)
@@ -83,6 +91,24 @@ def user_movie_list(request, template_name="movies/user_movie_list.html"):
 
     for user in users:
         movies = Movie.objects.filter(user=user).all()
+        user_movies.update({user: movies})
+
+    data = {}
+    data["object_list"] = user_movies
+    return render(request, template_name, data)
+
+
+@login_required
+def user_vote_list(request, template_name="movies/user_vote_list.html"):
+    user_movies = {}
+    users = User.objects.all()
+
+    for user in users:
+        movies = Movie.votes.all(user.id)
+        for movie in movies:
+            movie.user_vote = (
+                "like" if movie.votes.exists(user.id, action=UP) else "dislike"
+            )
         user_movies.update({user: movies})
 
     data = {}
