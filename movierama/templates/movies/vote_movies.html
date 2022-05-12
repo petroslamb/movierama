@@ -9,8 +9,9 @@
     {% for movie in object_list %}
     <li><b>{{ movie.title }}</b> [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] by {{ movie.user.username }} on {{ movie.pub_date }}
     <a href="{% url 'movies:movie_vote' movie.id %}">vote</a>
-    - You {{ movie.my_vote }}!
+    <b>- You {{ movie.my_vote }}!</b>
     </li>
+    Description: {{ movie.description }}
     {% endfor %}
 </ul>
 

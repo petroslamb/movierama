@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.forms import ChoiceField, Form, ModelForm, RadioSelect
+from django.forms import CharField, ChoiceField, Form, ModelForm, RadioSelect, Textarea
 from django.shortcuts import get_object_or_404, redirect, render
 from vote.models import DOWN, UP
 
@@ -9,6 +9,8 @@ from .models import Movie
 
 
 class MovieForm(ModelForm):
+    description = CharField(widget=Textarea())
+
     class Meta:
         model = Movie
         fields = ["title", "description"]

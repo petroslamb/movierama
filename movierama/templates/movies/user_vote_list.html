@@ -21,6 +21,7 @@
         <ul>
             <li> {{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] added on {{ movie.pub_date }} <b>- like</b>
             </li>
+            Description: {{ movie.description }}
         </ul>
         {% endfor %}
 
@@ -29,6 +30,7 @@
         <ul>
             <li> {{ movie.title }} [likes:{{ movie.num_vote_up }} - hates:{{ movie.num_vote_down }}] added on {{ movie.pub_date }} <b>- dislike</b>
             </li>
+            Description: {{ movie.description }}
         </ul>
         {% endfor %}
 

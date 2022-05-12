@@ -7,7 +7,7 @@ A movie voting app
 
 License: MIT
 
-[Visit MovieRama](https://peaceful-spire-34905.herokuapp.com/)
+[Visit MovieRama Website](https://peaceful-spire-34905.herokuapp.com/)
 
 [Read the docs](https://movierama.readthedocs.io/)
 
