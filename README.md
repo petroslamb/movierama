@@ -11,6 +11,22 @@ License: MIT
 
 [Read the docs](https://movierama.readthedocs.io/)
 
+## Quickstart
+
+This can take a while, especially the first time you run this particular command on your development system:
+
+```bash
+docker-compose -f local.yml build
+docker-compose -f local.yml up
+```
+
+Execute management commands:
+
+```bash
+docker-compose -f local.yml run --rm django python manage.py migrate
+docker-compose -f local.yml run --rm django python manage.py createsuperuser
+```
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).

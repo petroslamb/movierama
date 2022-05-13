@@ -4,6 +4,8 @@
 <h4><a href="{% url 'movies:user_movie_list' %}">User Movies</a></h4>
 <p>List of Movies submitted by each User. Click on a username to expand the list of user movies.</p>
 
+<a href="{% url 'movies:movie_user_list' %}" class="btn btn-info" role="button">Filter User</a>
+
 
 <div class="accordion accordion-flush" id="accordionFlushExample">
   {% for user, movies in object_list.items %}
@@ -28,5 +30,6 @@
   </div>
   {% endfor %}
 </div>
+
 
 {% endblock %}

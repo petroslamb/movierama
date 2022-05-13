@@ -17,3 +17,4 @@ crispy-bootstrap5==0.6  # https://github.com/django-crispy-forms/crispy-bootstra
 django-redis==5.2.0  # https://github.com/jazzband/django-redis
 django-tables2==2.4.1 # https://django-tables2.readthedocs.io/
 django-vote==2.3.0 # https://django-vote.readthedocs.io/
+django-filter==21.1 # https://django-filter.readthedocs.io/

@@ -1,30 +1,32 @@
 from django.contrib.auth.decorators import login_required
-from django.forms import CharField, ChoiceField, Form, ModelForm, RadioSelect, Textarea
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from vote.models import DOWN, UP
 
 from movierama.users.models import User
 
+from .filters import MovieUserFilter
+from .forms import MovieForm, VoteForm
 from .models import Movie
 
 
-class MovieForm(ModelForm):
-    description = CharField(widget=Textarea())
-
-    class Meta:
-        model = Movie
-        fields = ["title", "description"]
-
-
-VOTE_CHOICES = [
-    ("like", "Like"),
-    ("dislike", "Dislike"),
-    ("remove", "Remove existing vote"),
-]
+def movie_list(request, template_name="movies/movie_list.html"):
+    movies = Movie.objects.all()
+    data = {}
+    data["object_list"] = movies
+    return render(request, template_name, data)
 
 
-class VoteForm(Form):
-    vote = ChoiceField(choices=VOTE_CHOICES, widget=RadioSelect())
+@login_required
+def movie_user_list(request):
+    f = MovieUserFilter(request.GET, queryset=Movie.objects.all())
+    paginator = Paginator(f.qs.all(), 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    return render(
+        request, "movies/movie_user_list.html", {"user_movies": page_obj, "filter": f}
+    )
 
 
 @login_required
@@ -52,14 +54,6 @@ def movie_vote(request, pk, template_name="movies/movie_vote_form.html"):
 
         return redirect("movies:vote_movies")
     return render(request, template_name, {"form": form})
-
-
-@login_required
-def movie_list(request, template_name="movies/movie_list.html"):
-    movies = Movie.objects.all()
-    data = {}
-    data["object_list"] = movies
-    return render(request, template_name, data)
 
 
 @login_required
